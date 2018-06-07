@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, YellowBox } from 'react-native';
+import { Button, View, Text, TouchableHighlight, YellowBox, StyleSheet } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 
@@ -77,51 +77,84 @@ const LoginStack = createStackNavigator(
 
 /****************** End Login Stack ******************/
 /****************** CF Stack ******************/
+const styles = StyleSheet.create({
+  homeMain: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  tabContainer: {
+    flex: 1,
+    flexDirection: 'column'
+  },
+  tabsWrap: {
+    flex: 1,
+    height: 100,
+  },
+  buttonWrap: {
+    flex: 1,
+    flexDirection: 'row'
+
+  },
+  buttonNav: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: 'white',
+    backgroundColor: '#bada55',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+
+});
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Custom Fleet Home'
   }
+  componentDidMount() {
+    YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+  }
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'space-between' }}>
-        <View style={{ flex: 2, backgroundColor: 'red' }}>
+        <View style={styles.homeMain}>
           <Text>Home Screen</Text>
           <Button
             title="Go to Login"
             onPress={() => this.props.navigation.navigate('Loginstack')}
           />
         </View>
-        <View style={{ flex: 1 }}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <View>
-              <Button
-                style={{ flex: 1 }}
-                title="Go to healthcheck"
-                onPress={() => this.props.navigation.navigate('healthcheck')}
-              />
-            </View>
-            <View>
-              <Button
-                style={{ flex: 1 }}
-                title="Go to screen2"
-                onPress={() => this.props.navigation.navigate('screen2')}
-              />
+        <View style={styles.tabContainer}>
+          <View style={styles.tabsWrap}>
+            <View style={styles.buttonWrap}>
+                <TouchableHighlight
+                  style={styles.buttonNav}
+                  onPress={() => this.props.navigation.navigate('screen3')}
+                >
+                  <Text>screen3</Text>
+                </TouchableHighlight>
+                <TouchableHighlight
+                  style={styles.buttonNav}
+                  onPress={() => this.props.navigation.navigate('screen4')}
+                >
+                <Text>screen4</Text>
+                </TouchableHighlight>
             </View>
           </View>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <View>
-              <Button
-                style={{ flex: 1 }}
-                title="Go to screen3"
-                onPress={() => this.props.navigation.navigate('screen3')}
-              />
-            </View>
-            <View>
-              <Button
-                style={{ flex: 1 }}
-                title="Go to screen4"
-                onPress={() => this.props.navigation.navigate('screen4')}
-              />
+          <View style={styles.tabsWrap}>
+            <View style={styles.buttonWrap}>
+                <TouchableHighlight
+                  style={styles.buttonNav}
+                  onPress={() => this.props.navigation.navigate('screen3')}
+                >
+                  <Text>screen3</Text>
+                </TouchableHighlight>
+                <TouchableHighlight
+                  style={styles.buttonNav}
+                  onPress={() => this.props.navigation.navigate('screen4')}
+                >
+                <Text>screen4</Text>
+                </TouchableHighlight>
             </View>
           </View>
         </View>
